@@ -30,7 +30,12 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "{{ project_name }}.settings.pro
 # file. This includes Django's development server, if the WSGI_APPLICATION
 # setting points here.
 from django.core.wsgi import get_wsgi_application
-application = get_wsgi_application()
+_application = get_wsgi_application()
+
+def application(environ, start_response):
+    for k, v in environ.items():
+        os.environ[k] = str(v)
+    return _application(environ, start_response)
 
 # Apply WSGI middleware here.
 # from helloworld.wsgi import HelloWorldApplication
