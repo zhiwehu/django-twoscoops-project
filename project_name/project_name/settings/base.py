@@ -133,6 +133,10 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.tz',
     'django.contrib.messages.context_processors.messages',
     'django.core.context_processors.request',
+
+    # For allauth
+    'allauth.account.context_processors.account',
+    'allauth.socialaccount.context_processors.socialaccount',
 )
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#template-loaders
@@ -147,6 +151,12 @@ TEMPLATE_DIRS = (
 )
 ########## END TEMPLATE CONFIGURATION
 
+# See: https://github.com/pennersr/django-allauth#installation
+from django.conf.global_settings import AUTHENTICATION_BACKENDS
+
+AUTHENTICATION_BACKENDS += ('django.contrib.auth.backends.ModelBackend',
+                            'allauth.account.auth_backends.AuthenticationBackend',
+)
 
 ########## MIDDLEWARE CONFIGURATION
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#middleware-classes
