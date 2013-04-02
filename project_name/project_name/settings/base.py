@@ -4,6 +4,7 @@
 from os.path import abspath, basename, dirname, join, normpath
 from sys import path
 
+from django.core.urlresolvers import reverse_lazy
 
 ########## PATH CONFIGURATION
 # Absolute filesystem path to the Django project directory:
@@ -187,6 +188,20 @@ DJANGO_APPS = (
 THIRD_PARTY_APPS = (
     # Database migration helpers:
     'south',
+    'bootstrap_toolkit',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    #'allauth.socialaccount.providers.facebook',
+    #'allauth.socialaccount.providers.google',
+    #'allauth.socialaccount.providers.github',
+    #'allauth.socialaccount.providers.linkedin',
+    #'allauth.socialaccount.providers.openid',
+    #'allauth.socialaccount.providers.persona',
+    #'allauth.socialaccount.providers.soundcloud',
+    #'allauth.socialaccount.providers.stackexchange',
+    #'allauth.socialaccount.providers.twitter',
+    'json_field',
 )
 
 # Apps specific for this project go here.
@@ -235,3 +250,8 @@ LOGGING = {
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#wsgi-application
 WSGI_APPLICATION = 'wsgi.application'
 ########## END WSGI CONFIGURATION
+
+
+LOGIN_URL = reverse_lazy('account_login')
+LOGOUT_URL = reverse_lazy('account_logout')
+LOGIN_REDIRECT_URL = reverse_lazy('home')
