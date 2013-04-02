@@ -16,3 +16,12 @@ build
 
 # Logs:
 *.log
+
+# IDE
+.idea
+
+# Eclipse
+.project
+
+# Virtualenv
+env/*
