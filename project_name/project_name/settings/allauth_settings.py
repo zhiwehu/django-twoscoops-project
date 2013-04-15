@@ -1,7 +1,5 @@
 """Django-allauth configrations"""
 
-from django.conf import settings
-
 # Specifies the adapter class to use, allowing you to alter certain default behaviour.
 ACCOUNT_ADAPTER = 'allauth.account.adapter.DefaultAccountAdapter'
 
@@ -28,7 +26,7 @@ ACCOUNT_EMAIL_REQUIRED = True
 # Choose 'optional' or 'none' to allow logins with an unverified e-mail address. 
 # In case of 'optional', the e-mail verification mail is still sent, 
 # whereas in case of 'none' no e-mail verification mails are sent.
-ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+ACCOUNT_EMAIL_VERIFICATION = 'optional'
 
 # Subject-line prefix to use for email messages sent. 
 # By default, the name of the current Site (django.contrib.sites) is used.
@@ -75,7 +73,7 @@ SOCIALACCOUNT_AUTO_SIGNUP = True
 
 # Enable support for django-avatar. 
 # When enabled, the profile image of the user is copied locally into django-avatar at signup.
-AVATAR_SUPPORT = 'avatar' in settings.INSTALLED_APPS
+AVATAR_SUPPORT = False
 
 # Dictionary containing provider specific settings.
 # SOCIALACCOUNT_PROVIDERS = dict
@@ -106,3 +104,5 @@ SOCIALACCOUNT_PROVIDERS = \
               ]
           }
       }
+
+ACCOUNT_LOGOUT_ON_GET = True

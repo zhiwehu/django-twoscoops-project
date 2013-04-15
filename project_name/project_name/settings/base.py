@@ -167,6 +167,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
 )
 ########## END MIDDLEWARE CONFIGURATION
 
@@ -179,6 +180,9 @@ ROOT_URLCONF = '%s.urls' % SITE_NAME
 
 ########## APP CONFIGURATION
 DJANGO_APPS = (
+    # theme, must add at first
+    'themes.bootstrap',
+
     # Default Django apps:
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -266,3 +270,5 @@ WSGI_APPLICATION = 'wsgi.application'
 LOGIN_URL = reverse_lazy('account_login')
 LOGOUT_URL = reverse_lazy('account_logout')
 LOGIN_REDIRECT_URL = reverse_lazy('home')
+
+from allauth_settings import *
