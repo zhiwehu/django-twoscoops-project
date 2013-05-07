@@ -1,6 +1,9 @@
-{% load socialaccount %}
+{% load socialaccount user_social_list %}
 
+{% with user|get_social_list as user_social_list %}
 {% for provider in socialaccount.providers %}
+    {% if provider.id not in user_social_list %}
+
     {% if provider.id == "openid" %}
         {% for brand in provider.get_brands %}
             <a title="{{ brand.name }}"
@@ -16,5 +19,6 @@
        href="{% provider_login_url provider.id %}">
         <img src="{{ STATIC_URL }}img/glyphicons/png/glyphicons_{{ provider.id }}.png" title="{{ provider.name }}">
     </a>
+    {% endif %}
 {% endfor %}
-
+{% endwith %}
