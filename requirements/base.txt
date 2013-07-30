@@ -3,7 +3,7 @@ bpython==0.12
 django-braces==1.0.0
 django-model-utils==1.3.1
 logutils==0.3.3
-South==0.7.6
+South==0.8.1
 django-allauth
 django-bootstrap-toolkit
 django-json-field
